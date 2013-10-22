@@ -70,7 +70,9 @@ class FileImporter extends Concrete5_Library_FileImporter {
 
 		$s3 = Loader::helper('s3');			
 		$s3 = new S3Helper();
-		$r = $s3->putObject(S3Helper::inputFile($pointer), S3_BUCKET, $path, S3Helper::ACL_PUBLIC_READ,array('Content-Type'=>'image/jpg'),array('Content-Type'=>'image/jpg'));
+		$filetype = $s3->__getMimeType($filename);
+		echo $filetype;
+		$r = $s3->putObject(S3Helper::inputFile($pointer), S3_BUCKET, $path, S3Helper::ACL_PUBLIC_READ,array('Content-Type'=>$filetype),array('Content-Type'=>$filetype));
 
 		return $r;
 	}
