@@ -20,6 +20,12 @@ class S3FileManagerPackage extends Package {
         Loader::model('single_page');
         // install pages
         SinglePage::add('/dashboard/files/s3', $pkg);
+
+        //copy files who cant overridden with package
+
+
+
+
      }
      
 
@@ -39,6 +45,9 @@ class S3FileManagerPackage extends Package {
         $objEnv->overrideCoreByPackage('models/file_version.php', $this);
         $objEnv->overrideCoreByPackage('tools/files/bulk_properties.php', $this);
         $objEnv->overrideCoreByPackage('tools/files/properties.php', $this);
+        $objEnv->overrideCoreByPackage('tools/files/get_data.php', $this);
      }
+
+
 }
 ?>
